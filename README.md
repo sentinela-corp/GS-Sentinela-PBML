@@ -23,8 +23,18 @@ O controle do módulo MMA-01 é realizado através do Monitor Serial do Arduino.
 * `C` (Close) -> Fecha a garra de coleta (posição 0 graus).
 
 ## 📐 Software de Modelagem e Design
-O componente físico da garra (Grip) foi projetado utilizando o **OpenSCAD**. 
-A escolha do software se deu pela necessidade de **Design Paramétrico**. O código `.scad` incluído na pasta `/model` utiliza variáveis que permitem ajustar dinamicamente as dimensões do elo e o encaixe do motor, facilitando a adaptação para diferentes missões espaciais. O design inclui furos de alívio estrutural, otimizando a relação resistência-massa, uma premissa fundamental para o lançamento de cargas ao espaço.
+
+Os componentes físicos do MMA-01 foram projetados integralmente no **OpenSCAD**, utilizando **design paramétrico** para garantir adaptabilidade a diferentes configurações de missão.
+
+O arquivo `garra_sentinela.scad` na pasta `/model` contém **dois módulos independentes**:
+
+* **`elo_braco()`** — Elo estrutural que conecta dois servos em série. O perfil em "U" com paredes laterais contínuas e um **X-brace diagonal** (treliça em forma de X) distribui as forças de torque ao longo de toda a peça, prevenindo torção em manobras de docking. Inclui slot de encaixe preciso para o Servo 9g na extremidade de saída, furo de pivô M4 na extremidade de entrada, orelhas de montagem com furos M3 e janelas de alívio de massa retangulares.
+
+* **`garra_sentinela()`** — Garra de captura com base dodecagonal (12 lados) e 8 fins radiais de reforço, replicando o padrão estrutural de um horn de servo usinado. Os dois dedos simétricos possuem perfil cônico construído em **5 seções encadeadas** (`hull()`), formando um gancho retroflexo na ponta para captura passiva de amostras. Cada dedo conta com nervura longitudinal no dorso (afilando de 4 mm para 1,6 mm) e duas nervuras transversais posicionadas em 1/3 e 1/2 do comprimento, garantindo rigidez sem adição de massa desnecessária.
+
+Todas as dimensões críticas — comprimento do elo, abertura da garra, espessura das peças e medidas de encaixe do servo — são controladas por **variáveis paramétricas globais** no topo do arquivo, permitindo reescalonamento completo do conjunto sem reescrita de geometria.
+
+O design responde diretamente ao desafio de microgravidade: a relação resistência-massa é otimizada pelos furos de alívio em cada componente, e a geometria de gancho retroflexo permite captura passiva de objetos sem necessidade de pressão contínua do servo, reduzindo consumo energético em órbita.
 
 ## ⚡ Especificações Técnicas (Hardware)
 Para garantir a estabilidade do sistema e evitar resets por sobrecarga de corrente nos pinos lógicos, a alimentação dos motores é independente do processador.
