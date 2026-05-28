@@ -7,12 +7,14 @@
 * Eduardo Akira Murata – RM 98713
 * Wesley Souza de Oliveira – RM 97874
 
+**Repositório GitHub:** [https://github.com/sentinela-corp/GS-Sentinela-PBML](https://github.com/sentinela-corp/GS-Sentinela-PBML)
+
 ## 🛰️ Contexto do Projeto (Global Solution)
 Este projeto é um módulo integrado à plataforma **Sentinela**. Enquanto a Sentinela atua como o sistema central de monitoramento ambiental e detecção de riscos via dados orbitais, o **MMA-01 (Módulo de Manutenção Autônoma)** atua como a ferramenta física de intervenção. Ele é um braço robótico de coleta de amostras e *docking*, projetado para operar em ambientes de microgravidade, permitindo a manutenção de microssatélites ou a coleta de detritos espaciais.
 
 ## 🔗 Acesso ao Simulador
 O circuito eletrônico e o firmware foram validados no simulador Tinkercad.
-* **Link Público do Tinkercad:** [\[Sentinela - Módulo MMA-01\]](https://www.tinkercad.com/things/dwG5EdAbX4d-mma-01)
+* **Link Público do Tinkercad:** [Sentinela - Módulo MMA-01](https://www.tinkercad.com/things/dwG5EdAbX4d-mma-01)
 
 ## ⚙️ Guia de Operação
 O controle do módulo MMA-01 é realizado através do Monitor Serial do Arduino. Para operar o braço, inicie a simulação, abra o Monitor Serial, certifique-se de que a terminação de linha está em "Nenhum fim de linha" e envie os seguintes comandos (em letras maiúsculas):
